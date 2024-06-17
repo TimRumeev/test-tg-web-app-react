@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Button = (props) => {
+const Button = (props) => {
 	return(
 		<Button {...props} className={"button " + props.className}/>
 	);
