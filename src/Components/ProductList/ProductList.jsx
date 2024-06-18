@@ -25,26 +25,27 @@ const ProductList = () => {
 	const {tg} = useTelegram()
 
 	const onAdd = (product) => {
-		const isAlreadyAdded = addedItems.find(item => item.id === product.id)
-		let newItems = []
+        const alreadyAdded = addedItems.find(item => item.id === product.id);
+        let newItems = [];
 
-		if(isAlreadyAdded) {
-			newItems = addedItems.filter(item => item.id !== product.id)
-		} else { 
-			newItems = [...addedItems, product];
-		}
+        if(alreadyAdded) {
+            newItems = addedItems.filter(item => item.id !== product.id);
+        } else {
+            newItems = [...addedItems, product];
+        }
 
-		setAddedItems(newItems);
+        setAddedItems(newItems)
 
-		if(newItems.length === 0) {
-			tg.MainButton.hide();
-		} else { 
-			tg.MainButton.show();
-			tg.MainButton.setParams({
-				text: `Купить ${getTotalPrice(addedItems)}`
-			})
-		}
-	}
+        if(newItems.length === 0) {
+            tg.MainButton.hide();
+        } else {
+            tg.MainButton.show();
+            tg.MainButton.setParams({
+                text: `Купить ${getTotalPrice(newItems)}`
+            })
+        }
+    }
+
 
 	return (
 		<div className={"list"}>
