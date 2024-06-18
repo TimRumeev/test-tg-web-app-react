@@ -4,9 +4,13 @@ import "./ProductItem.css"
 
 const ProductItem = ({product, className, onAdd}) => {
 	
-	const onAddHandler = () => {
+	
+
+	const onAddHandler = (e) => {
 		onAdd(product)
+		e.target.style.backgroundColor = "gray";
 	}
+	
 
 	return(
 		<div className={"product " + className}>
