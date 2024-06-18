@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../Button/Button";
 import "./ProductItem.css"
 
 const ProductItem = ({product, className, onAdd}) => {
 	
+	const [buttonText, setButtonText] = useState('Добавить в корзину')
 	
 
 	const onAddHandler = (e) => {
 		onAdd(product)
 		e.target.style.backgroundColor = "gray";
+		setButtonText('Добавлено')
 	}
 	
 
@@ -21,7 +23,7 @@ const ProductItem = ({product, className, onAdd}) => {
 				<span>Стоимость: <b>{product.price}</b></span>
 			</div>
 			<Button className={"add-btn"} onClick={onAddHandler}>
-				Добавить в коризну
+				{buttonText}
 			</Button>
 		</div>
 	)
