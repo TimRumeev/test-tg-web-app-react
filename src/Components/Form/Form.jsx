@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import "./Form.css"
+import { useTelegram } from "../../hooks/useTelegram";
 
-const tg = window.Telegram.WebApp;
 const Form = () => {
 	const [country, setCountry] = useState('');
 	const [city, setCity] = useState('');
 	const [subject, setSubject] = useState('physical');
+	const {tg} = useTelegram()
 
 	useEffect(() => {
 		tg.MainButton.setParams({
 			text: "Отправить данные"
 		})
-	}, [])
+	}, [tg])
 
 	useEffect(() => {
 		if(!country || !city) {
@@ -19,7 +20,7 @@ const Form = () => {
 		} else {
 			tg.MainButton.show();
 		}
-	}, [country, city])
+	}, [country, city, tg])
 
 	const onChangeCountry = (e) => {
 		setCountry(e.target.value)
