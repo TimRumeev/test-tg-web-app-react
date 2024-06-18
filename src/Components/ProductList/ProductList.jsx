@@ -29,7 +29,7 @@ const ProductList = () => {
 		let newItems = []
 
 		if(isAlreadyAdded) {
-			newItems = addedItems.filter(item => item.id != product.id)
+			newItems = addedItems.filter(item => item.id !== product.id)
 		} else { 
 			newItems = [...addedItems, product];
 		}
