@@ -30,7 +30,7 @@ const ProductList = () => {
 			totalPrice: getTotalPrice(addedItems),
 			queryId,
 		}
-		fetch("http://localhost:8000", {
+		fetch("http://192.168.0.56:8000", {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -39,7 +39,7 @@ const ProductList = () => {
 			
 		})
 	}, [queryId, addedItems])
-	
+
 	useEffect(() => {
 		tg.onEvent("mainButtonClicked", onSendData)
 
